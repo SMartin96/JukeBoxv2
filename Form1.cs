@@ -32,6 +32,8 @@ namespace JukeBoxv2
         private void TrackListListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            WaitingToPlayListbox.Items.Add(TrackListListbox.SelectedItem);
+
         }
 
         private void HScrollBar_Scroll(object sender, ScrollEventArgs e)
@@ -65,6 +67,30 @@ namespace JukeBoxv2
         {
             string GenreTitle = File.ReadLines(SaveToFile + "GenreTitles.txt").Skip(0).Take(1).First();
             string TrackList = File.ReadLines(SaveToFile + "Songs.txt").Skip(0).Take(1).First();
+        }
+
+        private void MoveToNowPlaying_Tick(object sender, EventArgs e)
+        {
+
+            if (GenreTextbox.Text == "" && WaitingToPlayListbox.Items.Count > 0)
+            {
+                MoveToNowPlaying.Start();
+                GenreTextbox.Text = WaitingToPlayListbox.Items[0].ToString();
+                WaitingToPlayListbox.Items.RemoveAt(0);
+            }
+
+            if (IsJukeboxPlaying == true)
+            {
+                WMPLib.WindowsMediaPlayer PlayMusic = new WMPLib.WindowsMediaPlayer();
+                PlayMusic.URL = (SaveToFile + "//Tracks/" + GenreTextbox);
+                PlayMusic.controls.play();
+                MoveToNowPlaying.Stop();
+            }
+        }
+
+        private void WMPPlayer_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

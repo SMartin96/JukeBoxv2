@@ -39,7 +39,9 @@
             this.AboutFormButton = new System.Windows.Forms.Button();
             this.WaitingToPlayListbox = new System.Windows.Forms.ListBox();
             this.LoadTracks = new System.Windows.Forms.Timer(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.MoveToNowPlaying = new System.Windows.Forms.Timer(this.components);
+            this.WMPPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.WMPPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // CopyrightLabel
@@ -122,6 +124,21 @@
             this.LoadTracks.Enabled = true;
             this.LoadTracks.Tick += new System.EventHandler(this.LoadTracks_Tick);
             // 
+            // MoveToNowPlaying
+            // 
+            this.MoveToNowPlaying.Enabled = true;
+            this.MoveToNowPlaying.Tick += new System.EventHandler(this.MoveToNowPlaying_Tick);
+            // 
+            // WMPPlayer
+            // 
+            this.WMPPlayer.Enabled = true;
+            this.WMPPlayer.Location = new System.Drawing.Point(573, 29);
+            this.WMPPlayer.Name = "WMPPlayer";
+            this.WMPPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WMPPlayer.OcxState")));
+            this.WMPPlayer.Size = new System.Drawing.Size(10, 10);
+            this.WMPPlayer.TabIndex = 9;
+            this.WMPPlayer.Enter += new System.EventHandler(this.WMPPlayer_Enter);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -129,6 +146,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(595, 533);
+            this.Controls.Add(this.WMPPlayer);
             this.Controls.Add(this.WaitingToPlayListbox);
             this.Controls.Add(this.AboutFormButton);
             this.Controls.Add(this.SetupFormOpenButton);
@@ -139,6 +157,7 @@
             this.Controls.Add(this.CopyrightLabel);
             this.Name = "Form1";
             this.Text = "My Juke Box V1.0";
+            ((System.ComponentModel.ISupportInitialize)(this.WMPPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,7 +174,8 @@
         private System.Windows.Forms.Button AboutFormButton;
         private System.Windows.Forms.ListBox WaitingToPlayListbox;
         private System.Windows.Forms.Timer LoadTracks;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer MoveToNowPlaying;
+        private AxWMPLib.AxWindowsMediaPlayer WMPPlayer;
     }
 }
 
