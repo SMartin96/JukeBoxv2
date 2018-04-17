@@ -18,6 +18,7 @@ namespace JukeBoxv2
         {
             InitializeComponent();
         }
+        string SaveToFile = Directory.GetCurrentDirectory() + "\\";
 
         List<string> GenreList = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/GenreTitles.txt").ToList();
         List<string> TrackLists = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/Songs.txt").ToList();
@@ -101,24 +102,31 @@ namespace JukeBoxv2
 
         private void AddGenreBtn_Click(object sender, EventArgs e)
         {
+            string UserGenre = My_Dialogs.InputBox("Name your Genre");
+            GenreTitleTextbox.Text = UserGenre;
+
             if (GenreTitleTextbox.Text == "")
-            { 
-            string SaveGenre = Directory.GetCurrentDirectory() + "\\";
-            StreamWriter SaveGenreFile = File.AppendText(SaveGenre + "GenreTitles.txt");
-
-            string SaveTracks = Directory.GetCurrentDirectory() + "\\";
-            StreamWriter SaveTracksFile = File.AppendText(SaveTracks + "Songs.txt");
-
-            SaveGenreFile.WriteLine(GenreTitleTextbox.Text);
-
-           List<string>Tracklist = GenreListbox.Items.OfType<string>().ToList();
-
-            foreach (string Track in Tracklist)
             {
-                SaveTracksFile.WriteLine(Track);
+                string SaveGenre = Directory.GetCurrentDirectory() + "\\";
+                StreamWriter SaveGenreFile = File.AppendText(SaveGenre + "GenreTitles.txt");
+
+                string SaveTracks = Directory.GetCurrentDirectory() + "\\";
+                StreamWriter SaveTracksFile = File.AppendText(SaveTracks + "Songs.txt");
+
+
+                SaveGenreFile.WriteLine(GenreTitleTextbox.Text);
+
+                List<string> Tracklist = GenreListbox.Items.OfType<string>().ToList();
+
+                foreach (string Track in Tracklist)
+                {
+                    SaveTracksFile.WriteLine(Track);
+                }
+                SaveTracksFile.Close();
+                SaveGenreFile.Close();
+
             }
-            SaveTracksFile.Close();
-            SaveGenreFile.Close();
+            
         }
 
         private void NextGenreBtn_Click(object sender, EventArgs e)
