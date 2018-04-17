@@ -44,12 +44,14 @@ namespace JukeBoxv2
 
         private void SetupFormOpenButton_Click(object sender, EventArgs e)
         {
-
+            Setup GoToSetup = new Setup();
+            GoToSetup.Show();
         }
 
         private void AboutFormButton_Click(object sender, EventArgs e)
         {
-
+            About GoToAbout = new About();
+            GoToAbout.Show();
         }
     }
 }
