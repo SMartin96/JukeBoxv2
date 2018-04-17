@@ -23,6 +23,8 @@ namespace JukeBoxv2
         List<string> GenreList = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/GenreTitles.txt").ToList();
         List<string> TrackLists = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/Songs.txt").ToList();
 
+        public List<string> Genres = new List<string>();
+        public List<string> Tracks = new List<string>();
         private void ImportedTracks_SelectedIndexChanged(object sender, EventArgs e)
         {
            
@@ -102,30 +104,26 @@ namespace JukeBoxv2
 
         private void AddGenreBtn_Click(object sender, EventArgs e)
         {
-            string UserGenre = My_Dialogs.InputBox("Name your Genre");
-            GenreTitleTextbox.Text = UserGenre;
+        string UserGenre = My_Dialogs.InputBox("Name your Genre");
+        Genres.Add(UserGenre);
+        GenreTitleTextbox.Text = UserGenre;
 
-            if (GenreTitleTextbox.Text == "")
-            {
-                string SaveGenre = Directory.GetCurrentDirectory() + "\\";
-                StreamWriter SaveGenreFile = File.AppendText(SaveGenre + "GenreTitles.txt");
-
-                string SaveTracks = Directory.GetCurrentDirectory() + "\\";
-                StreamWriter SaveTracksFile = File.AppendText(SaveTracks + "Songs.txt");
+        StreamWriter SaveGenreFile = File.AppendText("GenreTitles.txt");
+        StreamWriter SaveTracksFile = File.AppendText("Songs.txt");
+            SaveGenreFile.WriteLine(UserGenre);
 
 
-                SaveGenreFile.WriteLine(GenreTitleTextbox.Text);
+            List <string> Tracklist = GenreListbox.Items.OfType<string>().ToList();
 
-                List<string> Tracklist = GenreListbox.Items.OfType<string>().ToList();
 
-                foreach (string Track in Tracklist)
+            foreach (string Track in Tracklist)
                 {
                     SaveTracksFile.WriteLine(Track);
                 }
                 SaveTracksFile.Close();
                 SaveGenreFile.Close();
 
-            }
+            
             
         }
 
