@@ -41,6 +41,7 @@
             this.LoadTracks = new System.Windows.Forms.Timer(this.components);
             this.MoveToNowPlaying = new System.Windows.Forms.Timer(this.components);
             this.WMPPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.AddDataBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.WMPPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@
             // 
             // SetupFormOpenButton
             // 
-            this.SetupFormOpenButton.Location = new System.Drawing.Point(155, 475);
+            this.SetupFormOpenButton.Location = new System.Drawing.Point(153, 497);
             this.SetupFormOpenButton.Name = "SetupFormOpenButton";
             this.SetupFormOpenButton.Size = new System.Drawing.Size(104, 24);
             this.SetupFormOpenButton.TabIndex = 5;
@@ -101,7 +102,7 @@
             // 
             // AboutFormButton
             // 
-            this.AboutFormButton.Location = new System.Drawing.Point(336, 474);
+            this.AboutFormButton.Location = new System.Drawing.Point(336, 495);
             this.AboutFormButton.Name = "AboutFormButton";
             this.AboutFormButton.Size = new System.Drawing.Size(104, 26);
             this.AboutFormButton.TabIndex = 6;
@@ -139,6 +140,16 @@
             this.WMPPlayer.TabIndex = 9;
             this.WMPPlayer.Enter += new System.EventHandler(this.WMPPlayer_Enter);
             // 
+            // AddDataBtn
+            // 
+            this.AddDataBtn.Location = new System.Drawing.Point(216, 67);
+            this.AddDataBtn.Name = "AddDataBtn";
+            this.AddDataBtn.Size = new System.Drawing.Size(159, 23);
+            this.AddDataBtn.TabIndex = 10;
+            this.AddDataBtn.Text = "Add Music";
+            this.AddDataBtn.UseVisualStyleBackColor = true;
+            this.AddDataBtn.Click += new System.EventHandler(this.AddDataBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -146,6 +157,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(595, 533);
+            this.Controls.Add(this.AddDataBtn);
             this.Controls.Add(this.WMPPlayer);
             this.Controls.Add(this.WaitingToPlayListbox);
             this.Controls.Add(this.AboutFormButton);
@@ -176,6 +188,7 @@
         private System.Windows.Forms.Timer LoadTracks;
         private System.Windows.Forms.Timer MoveToNowPlaying;
         private AxWMPLib.AxWindowsMediaPlayer WMPPlayer;
+        private System.Windows.Forms.Button AddDataBtn;
     }
 }
 

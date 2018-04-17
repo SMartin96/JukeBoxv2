@@ -18,16 +18,17 @@ namespace JukeBoxv2
         {
             InitializeComponent();
 
-            if (GenreList.Count > 0 && TrackList.Count > 0)
+            if (Genres.Count > 0 && Tracks.Count > 0)
             {
-                GenreTitleTextbox.Text = GenreList[0].ToString();
-                GenreListbox.Items.Add(TrackList[0]);
+                GenreTitleTextbox.Text = Genres[0].ToString();
+                GenreListbox.Items.Add(Tracks[0]);
             }
         }
         string SaveToFile = Directory.GetCurrentDirectory() + "\\";
 
-        List<string> GenreList = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/GenreTitles.txt").ToList();
-        List<string> TrackList = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/Songs.txt").ToList();
+        List<string> GenreList = File.ReadAllLines("GenreTitles.txt").ToList();
+        List<string> TrackList = File.ReadAllLines("Songs.txt").ToList();
+
 
         public List<string> Genres = new List<string>();
         public List<string> Tracks = new List<string>();
@@ -108,7 +109,10 @@ namespace JukeBoxv2
 
         private void PreviousGenreBtn_Click(object sender, EventArgs e)
         {
-            if (NumberOfGenres < GenreList.Count - 1)
+            List<string> GenreList = File.ReadAllLines(SaveToFile + "GenreTitles.txt").ToList();
+            List<string> TrackList = File.ReadAllLines(SaveToFile + "Songs.txt").ToList();
+
+            if (NumberOfGenres < Genres.Count - 1)
             {
                 NumberOfGenres += 1;
                 GenreTitleTextbox.Text = GenreList[NumberOfGenres];
@@ -117,6 +121,7 @@ namespace JukeBoxv2
             if (NumberOfTracks < TrackList.Count - 1)
             {
                 NumberOfTracks += 1;
+                GenreListbox.Items.Clear();
                 GenreListbox.Items.Add(TrackList[NumberOfTracks]);
             }
         }
@@ -161,6 +166,9 @@ namespace JukeBoxv2
 
         private void NextGenreBtn_Click(object sender, EventArgs e)
         {
+            List<string> GenreList = File.ReadAllLines(SaveToFile + "GenreTitles.txt").ToList();
+            List<string> TrackList = File.ReadAllLines(SaveToFile + "Songs.txt").ToList();
+
             if (NumberOfGenres > 0)
             {
                 NumberOfGenres -= 1;
@@ -170,6 +178,7 @@ namespace JukeBoxv2
             if (NumberOfTracks > 0)
             {
                 NumberOfTracks -= 1;
+                GenreListbox.Items.Clear();
                 GenreListbox.Items.Add(TrackList[NumberOfTracks]);
             }
 
@@ -179,6 +188,9 @@ namespace JukeBoxv2
 
         private void DeleteGenreBtn_Click(object sender, EventArgs e)
         {
+            List<string> GenreList = File.ReadAllLines(SaveToFile + "GenreTitles.txt").ToList();
+            List<string> TrackList = File.ReadAllLines(SaveToFile + "Songs.txt").ToList();
+
             string RemoveTracks = GenreListbox.Items.ToString(); 
             string RemoveGenres = GenreTitleTextbox.Text;
 
