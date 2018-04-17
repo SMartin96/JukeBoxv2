@@ -43,6 +43,7 @@
             this.DeleteGenreBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
+            this.GenreTitleTextbox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +92,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.GenreTitleTextbox);
             this.groupBox2.Controls.Add(this.DeleteGenreBtn);
             this.groupBox2.Controls.Add(this.PreviousGenreBtn);
             this.groupBox2.Controls.Add(this.AddGenreBtn);
@@ -107,9 +109,9 @@
             // 
             this.GenreListbox.FormattingEnabled = true;
             this.GenreListbox.ItemHeight = 16;
-            this.GenreListbox.Location = new System.Drawing.Point(15, 26);
+            this.GenreListbox.Location = new System.Drawing.Point(15, 58);
             this.GenreListbox.Name = "GenreListbox";
-            this.GenreListbox.Size = new System.Drawing.Size(246, 292);
+            this.GenreListbox.Size = new System.Drawing.Size(246, 260);
             this.GenreListbox.TabIndex = 1;
             this.GenreListbox.SelectedIndexChanged += new System.EventHandler(this.GenreListbox_SelectedIndexChanged);
             // 
@@ -201,6 +203,15 @@
             this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
             // 
+            // GenreTitleTextbox
+            // 
+            this.GenreTitleTextbox.Location = new System.Drawing.Point(13, 24);
+            this.GenreTitleTextbox.Name = "GenreTitleTextbox";
+            this.GenreTitleTextbox.ReadOnly = true;
+            this.GenreTitleTextbox.Size = new System.Drawing.Size(247, 22);
+            this.GenreTitleTextbox.TabIndex = 6;
+            this.GenreTitleTextbox.TextChanged += new System.EventHandler(this.GenreTitleTextbox_TextChanged);
+            // 
             // Setup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -217,6 +228,7 @@
             this.Text = "Setup";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,5 +250,6 @@
         private System.Windows.Forms.Button NextGenreBtn;
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Button OKBtn;
+        private System.Windows.Forms.TextBox GenreTitleTextbox;
     }
 }

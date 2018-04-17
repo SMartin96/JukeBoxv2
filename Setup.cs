@@ -19,6 +19,9 @@ namespace JukeBoxv2
             InitializeComponent();
         }
 
+        List<string> GenreList = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/GenreTitles.txt").ToList();
+        List<string> TrackLists = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/Songs.txt").ToList();
+
         private void ImportedTracks_SelectedIndexChanged(object sender, EventArgs e)
         {
            
@@ -87,8 +90,8 @@ namespace JukeBoxv2
 
         private void RemoveTrackFromGenreBtn_Click(object sender, EventArgs e)
         {
-            string RemoveItem = listBox2.Text;
-            listBox2.Items.Remove(RemoveItem);
+            string RemoveItem = GenreListbox.Text;
+            GenreListbox.Items.Remove(RemoveItem);
         }
 
         private void PreviousGenreBtn_Click(object sender, EventArgs e)
@@ -98,7 +101,24 @@ namespace JukeBoxv2
 
         private void AddGenreBtn_Click(object sender, EventArgs e)
         {
+            if (GenreTitleTextbox.Text == "")
+            { 
+            string SaveGenre = Directory.GetCurrentDirectory() + "\\";
+            StreamWriter SaveGenreFile = File.AppendText(SaveGenre + "GenreTitles.txt");
 
+            string SaveTracks = Directory.GetCurrentDirectory() + "\\";
+            StreamWriter SaveTracksFile = File.AppendText(SaveTracks + "Songs.txt");
+
+            SaveGenreFile.WriteLine(GenreTitleTextbox.Text);
+
+           List<string>Tracklist = GenreListbox.Items.OfType<string>().ToList();
+
+            foreach (string Track in Tracklist)
+            {
+                SaveTracksFile.WriteLine(Track);
+            }
+            SaveTracksFile.Close();
+            SaveGenreFile.Close();
         }
 
         private void NextGenreBtn_Click(object sender, EventArgs e)
@@ -107,6 +127,11 @@ namespace JukeBoxv2
         }
 
         private void DeleteGenreBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GenreTitleTextbox_TextChanged(object sender, EventArgs e)
         {
 
         }
