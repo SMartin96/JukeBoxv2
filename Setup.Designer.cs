@@ -33,17 +33,17 @@
             this.ImportTracksBtn = new System.Windows.Forms.Button();
             this.ImportedTracksListbox = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GenreTitleTextbox = new System.Windows.Forms.TextBox();
+            this.DeleteGenreBtn = new System.Windows.Forms.Button();
+            this.PreviousGenreBtn = new System.Windows.Forms.Button();
+            this.AddGenreBtn = new System.Windows.Forms.Button();
+            this.NextGenreBtn = new System.Windows.Forms.Button();
             this.GenreListbox = new System.Windows.Forms.ListBox();
             this.CopyTracksBtn = new System.Windows.Forms.Button();
             this.MoveTrackBtn = new System.Windows.Forms.Button();
             this.RemoveTrackFromGenreBtn = new System.Windows.Forms.Button();
-            this.NextGenreBtn = new System.Windows.Forms.Button();
-            this.AddGenreBtn = new System.Windows.Forms.Button();
-            this.PreviousGenreBtn = new System.Windows.Forms.Button();
-            this.DeleteGenreBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
-            this.GenreTitleTextbox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +105,55 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Present Genres Track List";
             // 
+            // GenreTitleTextbox
+            // 
+            this.GenreTitleTextbox.Location = new System.Drawing.Point(13, 24);
+            this.GenreTitleTextbox.Name = "GenreTitleTextbox";
+            this.GenreTitleTextbox.ReadOnly = true;
+            this.GenreTitleTextbox.Size = new System.Drawing.Size(247, 22);
+            this.GenreTitleTextbox.TabIndex = 6;
+            this.GenreTitleTextbox.TextChanged += new System.EventHandler(this.GenreTitleTextbox_TextChanged);
+            // 
+            // DeleteGenreBtn
+            // 
+            this.DeleteGenreBtn.Location = new System.Drawing.Point(100, 372);
+            this.DeleteGenreBtn.Name = "DeleteGenreBtn";
+            this.DeleteGenreBtn.Size = new System.Drawing.Size(90, 51);
+            this.DeleteGenreBtn.TabIndex = 5;
+            this.DeleteGenreBtn.Text = "Delete Genre";
+            this.DeleteGenreBtn.UseVisualStyleBackColor = true;
+            this.DeleteGenreBtn.Click += new System.EventHandler(this.DeleteGenreBtn_Click);
+            // 
+            // PreviousGenreBtn
+            // 
+            this.PreviousGenreBtn.Location = new System.Drawing.Point(15, 324);
+            this.PreviousGenreBtn.Name = "PreviousGenreBtn";
+            this.PreviousGenreBtn.Size = new System.Drawing.Size(79, 99);
+            this.PreviousGenreBtn.TabIndex = 4;
+            this.PreviousGenreBtn.Text = "<< Previous Genre";
+            this.PreviousGenreBtn.UseVisualStyleBackColor = true;
+            this.PreviousGenreBtn.Click += new System.EventHandler(this.PreviousGenreBtn_Click);
+            // 
+            // AddGenreBtn
+            // 
+            this.AddGenreBtn.Location = new System.Drawing.Point(100, 324);
+            this.AddGenreBtn.Name = "AddGenreBtn";
+            this.AddGenreBtn.Size = new System.Drawing.Size(90, 42);
+            this.AddGenreBtn.TabIndex = 3;
+            this.AddGenreBtn.Text = "Add Genre";
+            this.AddGenreBtn.UseVisualStyleBackColor = true;
+            this.AddGenreBtn.Click += new System.EventHandler(this.AddGenreBtn_Click);
+            // 
+            // NextGenreBtn
+            // 
+            this.NextGenreBtn.Location = new System.Drawing.Point(196, 324);
+            this.NextGenreBtn.Name = "NextGenreBtn";
+            this.NextGenreBtn.Size = new System.Drawing.Size(79, 99);
+            this.NextGenreBtn.TabIndex = 2;
+            this.NextGenreBtn.Text = "Next Genre >>";
+            this.NextGenreBtn.UseVisualStyleBackColor = true;
+            this.NextGenreBtn.Click += new System.EventHandler(this.NextGenreBtn_Click);
+            // 
             // GenreListbox
             // 
             this.GenreListbox.FormattingEnabled = true;
@@ -145,46 +194,6 @@
             this.RemoveTrackFromGenreBtn.UseVisualStyleBackColor = true;
             this.RemoveTrackFromGenreBtn.Click += new System.EventHandler(this.RemoveTrackFromGenreBtn_Click);
             // 
-            // NextGenreBtn
-            // 
-            this.NextGenreBtn.Location = new System.Drawing.Point(196, 324);
-            this.NextGenreBtn.Name = "NextGenreBtn";
-            this.NextGenreBtn.Size = new System.Drawing.Size(79, 99);
-            this.NextGenreBtn.TabIndex = 2;
-            this.NextGenreBtn.Text = "Next Genre >>";
-            this.NextGenreBtn.UseVisualStyleBackColor = true;
-            this.NextGenreBtn.Click += new System.EventHandler(this.NextGenreBtn_Click);
-            // 
-            // AddGenreBtn
-            // 
-            this.AddGenreBtn.Location = new System.Drawing.Point(100, 324);
-            this.AddGenreBtn.Name = "AddGenreBtn";
-            this.AddGenreBtn.Size = new System.Drawing.Size(90, 42);
-            this.AddGenreBtn.TabIndex = 3;
-            this.AddGenreBtn.Text = "Add Genre";
-            this.AddGenreBtn.UseVisualStyleBackColor = true;
-            this.AddGenreBtn.Click += new System.EventHandler(this.AddGenreBtn_Click);
-            // 
-            // PreviousGenreBtn
-            // 
-            this.PreviousGenreBtn.Location = new System.Drawing.Point(15, 324);
-            this.PreviousGenreBtn.Name = "PreviousGenreBtn";
-            this.PreviousGenreBtn.Size = new System.Drawing.Size(79, 99);
-            this.PreviousGenreBtn.TabIndex = 4;
-            this.PreviousGenreBtn.Text = "<< Previous Genre";
-            this.PreviousGenreBtn.UseVisualStyleBackColor = true;
-            this.PreviousGenreBtn.Click += new System.EventHandler(this.PreviousGenreBtn_Click);
-            // 
-            // DeleteGenreBtn
-            // 
-            this.DeleteGenreBtn.Location = new System.Drawing.Point(100, 372);
-            this.DeleteGenreBtn.Name = "DeleteGenreBtn";
-            this.DeleteGenreBtn.Size = new System.Drawing.Size(90, 51);
-            this.DeleteGenreBtn.TabIndex = 5;
-            this.DeleteGenreBtn.Text = "Delete Genre";
-            this.DeleteGenreBtn.UseVisualStyleBackColor = true;
-            this.DeleteGenreBtn.Click += new System.EventHandler(this.DeleteGenreBtn_Click);
-            // 
             // CancelBtn
             // 
             this.CancelBtn.Location = new System.Drawing.Point(635, 476);
@@ -193,6 +202,7 @@
             this.CancelBtn.TabIndex = 5;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // OKBtn
             // 
@@ -202,15 +212,7 @@
             this.OKBtn.TabIndex = 6;
             this.OKBtn.Text = "OK";
             this.OKBtn.UseVisualStyleBackColor = true;
-            // 
-            // GenreTitleTextbox
-            // 
-            this.GenreTitleTextbox.Location = new System.Drawing.Point(13, 24);
-            this.GenreTitleTextbox.Name = "GenreTitleTextbox";
-            this.GenreTitleTextbox.ReadOnly = true;
-            this.GenreTitleTextbox.Size = new System.Drawing.Size(247, 22);
-            this.GenreTitleTextbox.TabIndex = 6;
-            this.GenreTitleTextbox.TextChanged += new System.EventHandler(this.GenreTitleTextbox_TextChanged);
+            this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
             // Setup
             // 

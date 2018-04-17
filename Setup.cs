@@ -18,19 +18,22 @@ namespace JukeBoxv2
         {
             InitializeComponent();
 
-            if (GenreList.Count > 0 && TrackLists.Count > 0)
+            if (GenreList.Count > 0 && TrackList.Count > 0)
             {
-                GenreTitleTextbox.Text = GenreList[1].ToString();
-                GenreListbox.Items.Add(TrackLists[0]);
+                GenreTitleTextbox.Text = GenreList[0].ToString();
+                GenreListbox.Items.Add(TrackList[0]);
             }
         }
         string SaveToFile = Directory.GetCurrentDirectory() + "\\";
 
         List<string> GenreList = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/GenreTitles.txt").ToList();
-        List<string> TrackLists = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/Songs.txt").ToList();
+        List<string> TrackList = File.ReadAllLines("C:/Users/Gravy/Source/Repos/JukeBoxv2/Bin/Debug/Songs.txt").ToList();
 
         public List<string> Genres = new List<string>();
         public List<string> Tracks = new List<string>();
+
+        int NumberOfGenres = 0;
+        int NumberOfTracks = 0;
         private void ImportedTracks_SelectedIndexChanged(object sender, EventArgs e)
         {
            
@@ -105,12 +108,23 @@ namespace JukeBoxv2
 
         private void PreviousGenreBtn_Click(object sender, EventArgs e)
         {
+            if (NumberOfGenres < GenreList.Count - 1)
+            {
+                NumberOfGenres += 1;
+                GenreTitleTextbox.Text = GenreList[NumberOfGenres];
+            }
 
+            if (NumberOfTracks < TrackList.Count - 1)
+            {
+                NumberOfTracks += 1;
+                GenreListbox.Items.Add(TrackList[NumberOfTracks]);
+            }
         }
 
         private void AddGenreBtn_Click(object sender, EventArgs e)
         {
         string UserGenre = My_Dialogs.InputBox("Name your Genre");
+        NumberOfGenres++;
         Genres.Add(UserGenre);
         GenreTitleTextbox.Text = UserGenre;
 
@@ -119,33 +133,75 @@ namespace JukeBoxv2
             SaveGenreFile.WriteLine(UserGenre);
 
 
-            List <string> Tracklist = GenreListbox.Items.OfType<string>().ToList();
+            List <string> TracklistGenre = GenreListbox.Items.OfType<string>().ToList();
 
 
-            foreach (string Track in Tracklist)
+            foreach (string Track in TracklistGenre)
                 {
-                    SaveTracksFile.WriteLine(Track);
+                    SaveTracksFile.WriteLine(Track);             
                 }
+
+           List<int> TracklistSong = GenreListbox.Items.OfType<int>().ToList();
+
+            foreach ( int NumberTracks in TracklistSong)
+            {
+                NumberOfTracks++;
+            }
                 SaveTracksFile.Close();
                 SaveGenreFile.Close();
 
-            
-            
+
+            if (GenreTitleTextbox.Text != "")
+            {
+                GenreListbox.Items.Clear();
+            }
+
+
         }
 
         private void NextGenreBtn_Click(object sender, EventArgs e)
         {
+            if (NumberOfGenres > 0)
+            {
+                NumberOfGenres -= 1;
+                GenreTitleTextbox.Text = GenreList[NumberOfGenres];
+            }
+
+            if (NumberOfTracks > 0)
+            {
+                NumberOfTracks -= 1;
+                GenreListbox.Items.Add(TrackList[NumberOfTracks]);
+            }
+
+
 
         }
 
         private void DeleteGenreBtn_Click(object sender, EventArgs e)
         {
+            string RemoveTracks = GenreListbox.Items.ToString(); 
+            string RemoveGenres = GenreTitleTextbox.Text;
 
+            GenreList.Remove(RemoveGenres);
+            TrackList.Remove(RemoveTracks);
+
+            GenreTitleTextbox.Clear();
+            GenreListbox.Items.Clear();
         }
 
         private void GenreTitleTextbox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void OKBtn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
