@@ -17,6 +17,12 @@ namespace JukeBoxv2
         public Setup()
         {
             InitializeComponent();
+
+            if (GenreList.Count > 0 && TrackLists.Count > 0)
+            {
+                GenreTitleTextbox.Text = GenreList[1].ToString();
+                GenreListbox.Items.Add(TrackLists[0]);
+            }
         }
         string SaveToFile = Directory.GetCurrentDirectory() + "\\";
 
