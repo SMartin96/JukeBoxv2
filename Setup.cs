@@ -52,7 +52,7 @@ namespace JukeBoxv2
 
         private void ClearImportTracksBtn_Click(object sender, EventArgs e)
         {
-
+            ImportedTracksListbox.Items.Clear();
         }
 
         private void CopyTracksBtn_Click(object sender, EventArgs e)
@@ -87,7 +87,8 @@ namespace JukeBoxv2
 
         private void RemoveTrackFromGenreBtn_Click(object sender, EventArgs e)
         {
-
+            string RemoveItem = listBox2.Text;
+            listBox2.Items.Remove(RemoveItem);
         }
 
         private void PreviousGenreBtn_Click(object sender, EventArgs e)
