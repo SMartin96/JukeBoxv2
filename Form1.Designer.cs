@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.CopyrightLabel = new System.Windows.Forms.Label();
             this.GenreTextbox = new System.Windows.Forms.TextBox();
@@ -37,6 +38,8 @@
             this.SetupFormOpenButton = new System.Windows.Forms.Button();
             this.AboutFormButton = new System.Windows.Forms.Button();
             this.WaitingToPlayListbox = new System.Windows.Forms.ListBox();
+            this.LoadTracks = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // CopyrightLabel
@@ -50,8 +53,9 @@
             // 
             // GenreTextbox
             // 
-            this.GenreTextbox.Location = new System.Drawing.Point(216, 112);
+            this.GenreTextbox.Location = new System.Drawing.Point(216, 106);
             this.GenreTextbox.Name = "GenreTextbox";
+            this.GenreTextbox.ReadOnly = true;
             this.GenreTextbox.Size = new System.Drawing.Size(159, 22);
             this.GenreTextbox.TabIndex = 1;
             this.GenreTextbox.TextChanged += new System.EventHandler(this.GenreTextbox_TextChanged);
@@ -70,7 +74,7 @@
             // 
             this.HScrollBar.Location = new System.Drawing.Point(201, 237);
             this.HScrollBar.Name = "HScrollBar";
-            this.HScrollBar.Size = new System.Drawing.Size(190, 27);
+            this.HScrollBar.Size = new System.Drawing.Size(190, 14);
             this.HScrollBar.TabIndex = 3;
             this.HScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.HScrollBar_Scroll);
             // 
@@ -78,6 +82,7 @@
             // 
             this.NowPlayingTextbox.Location = new System.Drawing.Point(213, 267);
             this.NowPlayingTextbox.Name = "NowPlayingTextbox";
+            this.NowPlayingTextbox.ReadOnly = true;
             this.NowPlayingTextbox.Size = new System.Drawing.Size(162, 22);
             this.NowPlayingTextbox.TabIndex = 4;
             this.NowPlayingTextbox.TextChanged += new System.EventHandler(this.NowPlayingTextbox_TextChanged);
@@ -112,6 +117,11 @@
             this.WaitingToPlayListbox.TabIndex = 7;
             this.WaitingToPlayListbox.SelectedIndexChanged += new System.EventHandler(this.WaitingToPlayListbox_SelectedIndexChanged);
             // 
+            // LoadTracks
+            // 
+            this.LoadTracks.Enabled = true;
+            this.LoadTracks.Tick += new System.EventHandler(this.LoadTracks_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -144,6 +154,8 @@
         private System.Windows.Forms.Button SetupFormOpenButton;
         private System.Windows.Forms.Button AboutFormButton;
         private System.Windows.Forms.ListBox WaitingToPlayListbox;
+        private System.Windows.Forms.Timer LoadTracks;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

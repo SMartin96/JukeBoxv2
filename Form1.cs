@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace JukeBoxv2
 {
@@ -15,7 +16,13 @@ namespace JukeBoxv2
         public Form1()
         {
             InitializeComponent();
+            LoadTracks.Start();
         }
+        
+        string SaveToFile = Directory.GetCurrentDirectory() + "\\";
+
+
+        bool IsJukeboxPlaying;
 
         private void GenreTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -52,6 +59,12 @@ namespace JukeBoxv2
         {
             About GoToAbout = new About();
             GoToAbout.Show();
+        }
+
+        private void LoadTracks_Tick(object sender, EventArgs e)
+        {
+            string GenreTitle = File.ReadLines(SaveToFile + "GenreTitles.txt").Skip(0).Take(1).First();
+            string TrackList = File.ReadLines(SaveToFile + "Songs.txt").Skip(0).Take(1).First();
         }
     }
 }
