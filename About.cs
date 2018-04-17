@@ -16,5 +16,10 @@ namespace JukeBoxv2
         {
             InitializeComponent();
         }
+
+        private void AboutTextbox_TextChanged(object sender, EventArgs e)
+        {
+         
+        }
     }
 }
