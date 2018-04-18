@@ -16,6 +16,7 @@ namespace JukeBoxv2
         public Form1()
         {
             InitializeComponent();
+            MoveToNowPlaying.Start();
 
         }
         Setup Lists = new Setup();
@@ -27,10 +28,10 @@ namespace JukeBoxv2
         int NumberOfGenres = 0;
         int NumberOfTracks = 0;
 
-        string SaveToFile = Directory.GetCurrentDirectory() + "//";
-
+        string SaveToFile = Directory.GetCurrentDirectory() + "\\";
 
         bool IsJukeboxPlaying;
+        
 
         private void GenreTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -79,26 +80,26 @@ namespace JukeBoxv2
 
         private void MoveToNowPlaying_Tick(object sender, EventArgs e)
         {
-            if (NowPlayingTextbox.Text == "" && WaitingToPlayListbox.Items.Count > 0)
+            if (NowPlayingTextbox.Text == "")
+            {
+                if (WaitingToPlayListbox.Items.Count > 0)
+                {
+                    string Song = WaitingToPlayListbox.Items[0].ToString();
+                    NowPlayingTextbox.Text = Song;
+                    MoveToNowPlaying.Stop();
+                    WaitingToPlayListbox.Items.Clear();
+                }
+            }
+            if ( IsJukeboxPlaying == false)
             {
                 MoveToNowPlaying.Start();
-                NowPlayingTextbox.Text = WaitingToPlayListbox.Items[0].ToString();
-                WaitingToPlayListbox.Items.RemoveAt(0);
-                IsJukeboxPlaying = true;
+                if (NowPlayingTextbox.Text == "")
+                {
+                    WMPLib.WindowsMediaPlayer PlayMusic = new WMPLib.WindowsMediaPlayer();
+                    PlayMusic.URL = (SaveToFile + NowPlayingTextbox.Text);
+                    PlayMusic.controls.play();
+                }
             }
-
-        
-   
-        
-            if (IsJukeboxPlaying == false)
-            {
-                WMPLib.WindowsMediaPlayer PlayMusic = new WMPLib.WindowsMediaPlayer();
-        PlayMusic.URL = (SaveToFile + GenreTextbox.Text);
-                PlayMusic.controls.play();
-                IsJukeboxPlaying = true;
-                MoveToNowPlaying.Stop();
-            }
-
         }
 
         private void WMPPlayer_Enter(object sender, EventArgs e)
@@ -107,17 +108,19 @@ namespace JukeBoxv2
         }
 
         private void AddDataBtn_Click(object sender, EventArgs e)
-        {
+        { 
+          
             GenreTextbox.Text = GenreList[NumberOfGenres];
             TrackListListbox.Items.Clear();
             TrackListListbox.Items.Add(TrackList[NumberOfTracks]);
+        }
 
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
             WMPLib.WindowsMediaPlayer PlayMusic = new WMPLib.WindowsMediaPlayer();
-            PlayMusic.URL = (SaveToFile + NowPlayingTextbox.Text);
+            PlayMusic.URL = (SaveToFile + "SleepAway.mp3");
             PlayMusic.controls.play();
+            
         }
     }
 }
